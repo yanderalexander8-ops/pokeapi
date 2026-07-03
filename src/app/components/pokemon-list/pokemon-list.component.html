@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Pokédex</h1>
+
+  <div class="toolbar">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Buscar Pokémon por nombre (ej: pikachu)..."
+      [formControl]="searchControl"
+    />
+
+    <div class="pagination" *ngIf="!isSearching">
+      <button (click)="previousPage()" [disabled]="offset === 0 || loading">
+        &laquo; Anterior
+      </button>
+      <span>Offset: {{ offset }}</span>
+      <button (click)="nextPage()" [disabled]="loading">
+        Siguiente &raquo;
+      </button>
+    </div>
+  </div>
+
+  <!-- Estado de carga -->
+  <div class="state-message loading" *ngIf="loading">
+    Cargando Pokémon...
+  </div>
+
+  <!-- Estado de error -->
+  <div class="state-message error" *ngIf="error && !loading">
+    {{ error }}
+  </div>
+
+  <!-- Listado -->
+  <div class="card-grid" *ngIf="!loading && !error">
+    <div class="card" *ngFor="let pokemon of pokemons; trackBy: trackByPokemonId">
+      <img
+        *ngIf="pokemon.image"
+        [src]="pokemon.image"
+        [alt]="pokemon.name"
+        class="card-image"
+      />
+      <h2 class="card-title">{{ pokemon.name }}</h2>
+
+      <ul class="card-details">
+        <li><strong>Altura:</strong> {{ pokemon.height }}</li>
+        <li><strong>Peso:</strong> {{ pokemon.weight }}</li>
+        <li><strong>Exp. base:</strong> {{ pokemon.baseExperience }}</li>
+        <li><strong>Tipos:</strong> {{ pokemon.types.join(', ') }}</li>
+        <li><strong>Habilidades:</strong> {{ pokemon.abilities.join(', ') }}</li>
+      </ul>
+    </div>
+
+    <p *ngIf="pokemons.length === 0" class="empty-state">
+      No hay resultados para mostrar.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e63946;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.state-message {
+  text-align: center;
+  padding: 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.state-message.loading {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.state-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.15s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.card-title {
+  text-transform: capitalize;
+  margin: 8px 0;
+  color: #2c3e50;
+}
+
+.card-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font-size: 13px;
+  color: #444;
+}
+
+.card-details li {
+  margin-bottom: 4px;
+  text-transform: capitalize;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #777;
+}
